@@ -1,0 +1,12 @@
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\bin\Debug\netcoreapp1.1\WebAppPaq.deps.json
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\bin\Debug\netcoreapp1.1\WebAppPaq.runtimeconfig.json
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\bin\Debug\netcoreapp1.1\WebAppPaq.runtimeconfig.dev.json
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\bin\Debug\netcoreapp1.1\WebAppPaq.dll
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\bin\Debug\netcoreapp1.1\WebAppPaq.pdb
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.csprojResolveAssemblyReference.cache
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.AssemblyInfo.cs
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.dll
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.pdb
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.csproj.CoreCompileInputs.cache
+C:\Users\edgar.santiago\Desktop\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.AssemblyInfoInputs.cache
