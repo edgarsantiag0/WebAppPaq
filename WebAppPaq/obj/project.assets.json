@@ -10955,10 +10955,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edgar.santiago\\Desktop\\WebAppPaq\\WebAppPaq\\WebAppPaq.csproj",
+      "projectUniqueName": "C:\\workspace\\WebAppPaq\\WebAppPaq\\WebAppPaq.csproj",
       "projectName": "WebAppPaq",
-      "projectPath": "C:\\Users\\edgar.santiago\\Desktop\\WebAppPaq\\WebAppPaq\\WebAppPaq.csproj",
-      "outputPath": "C:\\Users\\edgar.santiago\\Desktop\\WebAppPaq\\WebAppPaq\\obj\\",
+      "projectPath": "C:\\workspace\\WebAppPaq\\WebAppPaq\\WebAppPaq.csproj",
+      "outputPath": "C:\\workspace\\WebAppPaq\\WebAppPaq\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

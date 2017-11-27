@@ -1,0 +1,77 @@
+@model IEnumerable<WebAppPaq.Models.Paq.Factura>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApellidoCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CedulaCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaCreacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sucursal1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sucursal2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sucursal1.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sucursal2.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

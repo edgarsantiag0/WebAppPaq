@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using WebAppPaq.Data;
 using WebAppPaq.Models;
 using WebAppPaq.Services;
+using WebAppPaq.Models.Paq;
 
 namespace WebAppPaq
 {
@@ -43,9 +44,13 @@ namespace WebAppPaq
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<IWebAppPaqRepository, WebAppPaqRepository>();
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddTransient<WebAppPaqSeedData>();
 
             services.AddMvc();
 
@@ -55,8 +60,12 @@ namespace WebAppPaq
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, 
+            IHostingEnvironment env, 
+            ILoggerFactory loggerFactory,
+            WebAppPaqSeedData seeder)
         {
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -83,6 +92,9 @@ namespace WebAppPaq
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
+            seeder.EnsureSeedData().Wait();
         }
     }
 }
