@@ -22,7 +22,7 @@ namespace WebAppPaq.Controllers
         // GET: Facturas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Facturas.Include(f => f.Sucursal1).Include(f => f.Sucursal2);
+            var applicationDbContext = _context.Facturas.Include(f => f.Sucursal);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,8 +35,7 @@ namespace WebAppPaq.Controllers
             }
 
             var factura = await _context.Facturas
-                .Include(f => f.Sucursal1)
-                .Include(f => f.Sucursal2)
+                .Include(f => f.Sucursal)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (factura == null)
             {
@@ -49,8 +48,7 @@ namespace WebAppPaq.Controllers
         // GET: Facturas/Create
         public IActionResult Create()
         {
-            ViewData["Sucursal1Id"] = new SelectList(_context.Sucursales, "Id", "Descripcion");
-            ViewData["Sucursal2Id"] = new SelectList(_context.Sucursales, "Id", "Descripcion");
+            ViewData["SucursalId"] = new SelectList(_context.Sucursales, "Id", "Descripcion");
             return View();
         }
 
@@ -59,7 +57,7 @@ namespace WebAppPaq.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Usuario,NombreCliente,ApellidoCliente,TelefonoCliente,CedulaCliente,FechaCreacion,Sucursal1Id,Sucursal2Id,Total")] Factura factura)
+        public async Task<IActionResult> Create([Bind("Id,Usuario,NombreClienteEnvia,ApellidoClienteEnvia,TelefonoClienteEnvia,CedulaClienteEnvia,NombreClienteRecibe,ApellidoClienteRecibe,TelefonoClienteRecibe,CedulaClienteRecibe,FechaCreacion,SucursalId,Total")] Factura factura)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +65,8 @@ namespace WebAppPaq.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["Sucursal1Id"] = new SelectList(_context.Sucursales, "Id", "Id", factura.Sucursal1Id);
-            ViewData["Sucursal2Id"] = new SelectList(_context.Sucursales, "Id", "Id", factura.Sucursal2Id);
+          //  ViewData["SucursalId"] = new SelectList(_context.Sucursales, "Id", "Id", factura.SucursalId);
+            ViewData["SucursalId"] = new SelectList(_context.Sucursales, "Id", "Descripcion");
             return View(factura);
         }
 
@@ -85,8 +83,7 @@ namespace WebAppPaq.Controllers
             {
                 return NotFound();
             }
-            ViewData["Sucursal1Id"] = new SelectList(_context.Sucursales, "Id", "Id", factura.Sucursal1Id);
-            ViewData["Sucursal2Id"] = new SelectList(_context.Sucursales, "Id", "Id", factura.Sucursal2Id);
+            ViewData["SucursalId"] = new SelectList(_context.Sucursales, "Id", "Id", factura.SucursalId);
             return View(factura);
         }
 
@@ -95,7 +92,7 @@ namespace WebAppPaq.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Usuario,NombreCliente,ApellidoCliente,TelefonoCliente,CedulaCliente,FechaCreacion,Sucursal1Id,Sucursal2Id,Total")] Factura factura)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Usuario,NombreClienteEnvia,ApellidoClienteEnvia,TelefonoClienteEnvia,CedulaClienteEnvia,NombreClienteRecibe,ApellidoClienteRecibe,TelefonoClienteRecibe,CedulaClienteRecibe,FechaCreacion,SucursalId,Total")] Factura factura)
         {
             if (id != factura.Id)
             {
@@ -122,8 +119,7 @@ namespace WebAppPaq.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["Sucursal1Id"] = new SelectList(_context.Sucursales, "Id", "Id", factura.Sucursal1Id);
-            ViewData["Sucursal2Id"] = new SelectList(_context.Sucursales, "Id", "Id", factura.Sucursal2Id);
+            ViewData["SucursalId"] = new SelectList(_context.Sucursales, "Id", "Id", factura.SucursalId);
             return View(factura);
         }
 
@@ -136,8 +132,7 @@ namespace WebAppPaq.Controllers
             }
 
             var factura = await _context.Facturas
-                .Include(f => f.Sucursal1)
-                .Include(f => f.Sucursal2)
+                .Include(f => f.Sucursal)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (factura == null)
             {

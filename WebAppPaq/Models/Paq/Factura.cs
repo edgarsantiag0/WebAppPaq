@@ -10,27 +10,35 @@ namespace WebAppPaq.Models.Paq
     public class Factura
     {
         public int Id { get; set; }
-        public string Usuario { get; set; }
-        public string NombreCliente { get; set; }
-        public string ApellidoCliente { get; set; }
-        public string TelefonoCliente { get; set; }
-        public string CedulaCliente { get; set; }        
-        public DateTime FechaCreacion { get; set; }
 
-        [ForeignKey("Sucursal1")]
-        public int? Sucursal1Id { get; set; }
-        [ForeignKey("Sucursal2")]
-        public int? Sucursal2Id { get; set; }
+        public string Usuario { get; set; }
+
+        public string NombreClienteEnvia { get; set; }
+        public string ApellidoClienteEnvia { get; set; }
+        public string TelefonoClienteEnvia { get; set; }
+        public string CedulaClienteEnvia { get; set; }
+
+        public string NombreClienteRecibe { get; set; }
+        public string ApellidoClienteRecibe { get; set; }
+        public string TelefonoClienteRecibe { get; set; }
+        public string CedulaClienteRecibe { get; set; }
+
+        private DateTime? fechaCreacion;
+
+        public DateTime FechaCreacion
+        {
+            get { return fechaCreacion ?? DateTime.Now; }
+            set { fechaCreacion = value; }
+        }
+
+        public int? SucursalId { get; set; }
 
         public decimal Total { get; set; }
 
-
-        [InverseProperty("Factura1")]
-        public virtual Sucursal Sucursal1 { get; set; }
+        public virtual Sucursal Sucursal { get; set; }
 
    
-        [InverseProperty("Factura2")]
-        public virtual Sucursal Sucursal2 { get; set; }
+
 
         public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; }
     }

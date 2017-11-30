@@ -17,6 +17,10 @@ namespace WebAppPaq.Models.Paq
         public decimal MontoEnvio { get; set; }
         public decimal Precio { get; set; }
 
+        public int? SucursalId { get; set; }
+
+
+        public virtual Sucursal Sucursal { get; set; }
 
         public virtual Factura Factura { get; set; }
     }

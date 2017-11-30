@@ -1,5 +1,190 @@
 @model WebAppPaq.Models.Paq.Factura
 
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+    <h2></h2>
+    <div class="container">
+        <div class="master form-horizontal">
+            <h2>Factura</h2>
+            <table class="table table-responsive">
+                <tr>
+                    <td>Factura No</td>
+                    <td>
+                        <input type="text" id="id" disabled="disabled" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+                    <td>Fecha</td>
+                    <td> 
+                        <input type="text" id="fechaCreacion" class="form-control" />
+                        <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
+                    </td>
+                </tr>
+                <tr>
+                   
+                    <td colspan="2">
+                        <label>Nombre cliente envía</label>
+                        <input type="text" id="nombreClienteEnvia" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+                   
+                    <td colspan="2">
+                        <label>Apellido cliente envia</label>
+                        <input type="text" id="apellidoClienteEnvia" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+
+                    <td colspan="2">
+                        <label>Telefono cliente envia</label>
+                        <input type="text" id="telefonoClienteEnvia" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+ 
+                    <td colspan="2">
+                        <label>Cedula cliente envia</label>
+                        <input type="text" id="cedulaClienteEnvia" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+
+                </tr>
+                <tr>
+               
+                    <td colspan="2">
+                        <label>Nombre cliente recibe</label>
+                        <input type="text" id="nombreClienteRecibe" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+                   
+                    <td colspan="2">
+                        <label>Apellido cliente recibe</label>
+                        <input type="text" id="apellidoClienteRecibe" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+                    
+                    <td colspan="2">
+                        <label>Telefono cliente recibe</label>
+                        <input type="text" id="telefonoClienteRecibe" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+                   
+                    <td colspan="2">
+                        <label>Cedula cliente recibe</label>
+                        <input type="text" id="cedulaClienteRecibe" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Sucursal</td>
+                    <td colspan="3">
+                        <div class="form-group">
+                            
+                            <div class="col-md-10">
+                                <select asp-for="SucursalId" class="form-control" asp-items="ViewBag.SucursalId"></select>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="details">
+            <h2>
+                Detalle factura
+            </h2>
+            <table class="table table-responsive">
+                <tr>
+                    <td>Tipo</td>
+                    <td>Peso (lb)</td>
+                    <td>Monto</td>
+                    <td>Precio</td>
+                    <td>Sucursal</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="mycontainer" id="mainrow">
+                    <td>
+                        <select id="tipoProducto" class="pc form-control" onchange="LoadTipoProducto(this)">
+                            <option>Seleccionar</option>
+                            <option>Paquete</option>
+                            <option>Dinero</option>
+                            <option>Paquete fragil</option>
+                        </select>
+                        <span class="error">Seleccionar tipo</span>
+                    </td>
+                    <td>
+                        <input type="text" id="peso" class="quantity form-control" />
+                        <span class="error">valid peso required</span>
+                    </td>
+                    <td>
+                        <input type="text" id="monto" class="quantity form-control" />
+                        <span class="error">Valid monto required</span>
+                    </td>
+                    <td>
+                        <input type="text" id="precio" disabled="disabled" class="rate form-control" />
+                        <span class="error">Valid precio required</span>
+                    </td>
+                    <td>
+                        <select asp-for="SucursalId" class="form-control" asp-items="ViewBag.SucursalId"></select>
+                        <span class="error">Valid precio required</span>
+                    </td>
+                    <td>
+                        <input type="button" id="add" value="add" style="width:80px" class="btn btn-success" />
+                    </td>
+                </tr>
+            </table>
+            <div id="orderItems">
+                <table class="table table-responsive" id="orderdetailsItems"></table>
+                <span id="orderItemError" style="color:red"></span>
+            </div>
+            <div style="padding:10px 0; text-align:right">
+                <input id="submit" type="button" value="Guardar" class="btn btn-warning" style="padding:10px 20px" />
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <script src="~/Scripts/myScripts.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#fechaCreacion').datepicker({
+            dateFormat: 'dd/mm/yy hh:mm:ss aa',
+        }).datepicker("option", {
+            setDate: "0",
+            maxDate: '+3y -1d',
+            minDate: '0'
+        });
+        $('#fechaCreacion').datepicker("setDate", "0"); //"0" for current date
+    });
+
+    $(function () {
+        $('#fechaCreacion').datepicker({
+            dateFormat: 'dd-MM-yyyy HH:mm'
+        })
+    })
+</script>
+<style>
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+    tr.error {
+        background-color: rgba(255,0,0,0.35);
+    }
+</style>
+
+
+
+@*@model WebAppPaq.Models.Paq.Factura
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -19,31 +204,59 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="NombreCliente" class="col-md-2 control-label"></label>
+            <label asp-for="NombreClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="NombreCliente" class="form-control" />
-                <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                <input asp-for="NombreClienteEnvia" class="form-control" />
+                <span asp-validation-for="NombreClienteEnvia" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ApellidoCliente" class="col-md-2 control-label"></label>
+            <label asp-for="ApellidoClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ApellidoCliente" class="form-control" />
-                <span asp-validation-for="ApellidoCliente" class="text-danger"></span>
+                <input asp-for="ApellidoClienteEnvia" class="form-control" />
+                <span asp-validation-for="ApellidoClienteEnvia" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="TelefonoCliente" class="col-md-2 control-label"></label>
+            <label asp-for="TelefonoClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="TelefonoCliente" class="form-control" />
-                <span asp-validation-for="TelefonoCliente" class="text-danger"></span>
+                <input asp-for="TelefonoClienteEnvia" class="form-control" />
+                <span asp-validation-for="TelefonoClienteEnvia" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="CedulaCliente" class="col-md-2 control-label"></label>
+            <label asp-for="CedulaClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CedulaCliente" class="form-control" />
-                <span asp-validation-for="CedulaCliente" class="text-danger"></span>
+                <input asp-for="CedulaClienteEnvia" class="form-control" />
+                <span asp-validation-for="CedulaClienteEnvia" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NombreClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NombreClienteRecibe" class="form-control" />
+                <span asp-validation-for="NombreClienteRecibe" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApellidoClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ApellidoClienteRecibe" class="form-control" />
+                <span asp-validation-for="ApellidoClienteRecibe" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TelefonoClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TelefonoClienteRecibe" class="form-control" />
+                <span asp-validation-for="TelefonoClienteRecibe" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CedulaClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CedulaClienteRecibe" class="form-control" />
+                <span asp-validation-for="CedulaClienteRecibe" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -54,15 +267,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Sucursal1Id" class="col-md-2 control-label"></label>
+            <label asp-for="SucursalId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="Sucursal1Id" class ="form-control" asp-items="ViewBag.Sucursal1Id"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Sucursal2Id" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="Sucursal2Id" class ="form-control" asp-items="ViewBag.Sucursal2Id"></select>
+                <select asp-for="SucursalId" class ="form-control" asp-items="ViewBag.SucursalId"></select>
             </div>
         </div>
         <div class="form-group">
@@ -86,4 +293,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@

@@ -22,37 +22,68 @@ namespace WebAppPaq.Data
             {
                 var facturaNueva = new Factura()
                 {
-                    NombreCliente = "Jhon",
-                    ApellidoCliente = "Diaz",
-                    CedulaCliente = "001-9981768-8",
+                    NombreClienteEnvia = "Jhon",
+                    ApellidoClienteEnvia = "Diaz",
+                    CedulaClienteEnvia = "001-9981768-8",
+                    TelefonoClienteEnvia = "809-567-9090",
+
+                    NombreClienteRecibe = "Jose",
+                    ApellidoClienteRecibe = "Polanco",
+                    CedulaClienteRecibe = "001-1231745-8",
+                    TelefonoClienteRecibe = "809-543-0101",
+
+
+
                     FechaCreacion = DateTime.UtcNow,
-                    TelefonoCliente = "809-567-9090",
+                    
                     Total = 1590,
-                    Sucursal1 = new Sucursal()
+                    Sucursal = new Sucursal()
                     {
                         Ciudad = "La Vega",
                         Descripcion = "Sucursal de ventas",
                         Direccion = "Calle 10, Gurabo",
                     },
-                    Sucursal2 = new Sucursal()
-                    {
-                        Ciudad = "San Fco de Macoris",
-                        Descripcion = "Sucursal principal",
-                        Direccion = "Lopez de vega",
-                    },
+                  
                     Usuario = "",
                     DetalleFacturas = new List<DetalleFactura>()
                     {
-                        new DetalleFactura(){ MontoEnvio = 1200, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 500, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 200, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 900, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 2340, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 4320, Precio = 200, TipoProducto = "Dinero"}
-
-
+                        new DetalleFactura(){
+                            MontoEnvio = 1200,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "Santo Domingo",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
+                        new DetalleFactura(){
+                            MontoEnvio = 400,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "Pedernales",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
+                        new DetalleFactura(){
+                            MontoEnvio = 800,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "San Pedro de Macoris",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
+                        new DetalleFactura(){
+                            MontoEnvio = 1200,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "Tenares",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
                     }
-
                 };
 
                 _context.Facturas.Add(facturaNueva);
@@ -61,36 +92,68 @@ namespace WebAppPaq.Data
 
                 var facturaNueva2 = new Factura()
                 {
-                    NombreCliente = "Albert",
-                    ApellidoCliente = "Diaz",
-                    CedulaCliente = "001-9981768-8",
+                    NombreClienteEnvia = "Jhon",
+                    ApellidoClienteEnvia = "Diaz",
+                    CedulaClienteEnvia = "001-9981768-8",
+                    TelefonoClienteEnvia = "809-567-9090",
+
+                    NombreClienteRecibe = "Jose",
+                    ApellidoClienteRecibe = "Polanco",
+                    CedulaClienteRecibe = "001-1231745-8",
+                    TelefonoClienteRecibe = "809-543-0101",
+
+
+
                     FechaCreacion = DateTime.UtcNow,
-                    TelefonoCliente = "809-567-9090",
+
                     Total = 1590,
-                    Sucursal1 = new Sucursal()
+                    Sucursal = new Sucursal()
                     {
-                        Ciudad = "Santiago",
+                        Ciudad = "Puerto Plata",
                         Descripcion = "Sucursal de ventas",
                         Direccion = "Calle 10, Gurabo",
                     },
-                    Sucursal2 = new Sucursal()
-                    {
-                        Ciudad = "Santo Domingo",
-                        Descripcion = "Sucursal principal",
-                        Direccion = "Lopez de vega",
-                    },
+
                     Usuario = "",
                     DetalleFacturas = new List<DetalleFactura>()
                     {
-                         new DetalleFactura(){ MontoEnvio = 1200, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 500, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 200, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 900, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 2340, Precio = 200, TipoProducto = "Dinero"},
-                        new DetalleFactura(){ MontoEnvio = 4320, Precio = 200, TipoProducto = "Dinero"}
-
+                        new DetalleFactura(){
+                            MontoEnvio = 1200,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "Mao",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
+                        new DetalleFactura(){
+                            MontoEnvio = 400,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "Punta Cana",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
+                        new DetalleFactura(){
+                            MontoEnvio = 800,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "San Francisco",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
+                        new DetalleFactura(){
+                            MontoEnvio = 1200,
+                            Precio = 200, TipoProducto = "Dinero",
+                            Sucursal = new Sucursal()
+                                {
+                                    Ciudad = "Salcedo",
+                                    Descripcion = "Sucursal de ventas",
+                                    Direccion = "Calle 10, Gurabo",
+                                }},
                     }
-
                 };
 
                 _context.Facturas.Add(facturaNueva2);

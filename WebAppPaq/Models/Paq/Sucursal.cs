@@ -12,8 +12,8 @@ namespace WebAppPaq.Models.Paq
 
         public Sucursal()
         {
-            Factura1 = new HashSet<Factura>();
-            Factura2 = new HashSet<Factura>();
+            Factura = new HashSet<Factura>();
+            DetalleFactura = new HashSet<DetalleFactura>();
         }
 
         public int Id { get; set; }
@@ -21,9 +21,9 @@ namespace WebAppPaq.Models.Paq
         public string Ciudad { get; set; }
         public string Direccion { get; set; }
 
-        [InverseProperty("Sucursal1")]
-        public virtual ICollection<Factura> Factura1 { get; set; }
-       [InverseProperty("Sucursal2")]
-        public virtual ICollection<Factura> Factura2 { get; set; }
+ 
+        public virtual ICollection<Factura> Factura { get; set; }
+
+        public virtual ICollection<DetalleFactura> DetalleFactura { get; set; }
     }
 }

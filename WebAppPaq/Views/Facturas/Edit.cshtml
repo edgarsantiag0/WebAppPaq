@@ -20,31 +20,59 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="NombreCliente" class="col-md-2 control-label"></label>
+            <label asp-for="NombreClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="NombreCliente" class="form-control" />
-                <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                <input asp-for="NombreClienteEnvia" class="form-control" />
+                <span asp-validation-for="NombreClienteEnvia" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ApellidoCliente" class="col-md-2 control-label"></label>
+            <label asp-for="ApellidoClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ApellidoCliente" class="form-control" />
-                <span asp-validation-for="ApellidoCliente" class="text-danger"></span>
+                <input asp-for="ApellidoClienteEnvia" class="form-control" />
+                <span asp-validation-for="ApellidoClienteEnvia" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="TelefonoCliente" class="col-md-2 control-label"></label>
+            <label asp-for="TelefonoClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="TelefonoCliente" class="form-control" />
-                <span asp-validation-for="TelefonoCliente" class="text-danger"></span>
+                <input asp-for="TelefonoClienteEnvia" class="form-control" />
+                <span asp-validation-for="TelefonoClienteEnvia" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="CedulaCliente" class="col-md-2 control-label"></label>
+            <label asp-for="CedulaClienteEnvia" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CedulaCliente" class="form-control" />
-                <span asp-validation-for="CedulaCliente" class="text-danger"></span>
+                <input asp-for="CedulaClienteEnvia" class="form-control" />
+                <span asp-validation-for="CedulaClienteEnvia" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NombreClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NombreClienteRecibe" class="form-control" />
+                <span asp-validation-for="NombreClienteRecibe" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApellidoClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ApellidoClienteRecibe" class="form-control" />
+                <span asp-validation-for="ApellidoClienteRecibe" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TelefonoClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TelefonoClienteRecibe" class="form-control" />
+                <span asp-validation-for="TelefonoClienteRecibe" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CedulaClienteRecibe" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CedulaClienteRecibe" class="form-control" />
+                <span asp-validation-for="CedulaClienteRecibe" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -55,17 +83,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Sucursal1Id" class="control-label col-md-2"></label>
+            <label asp-for="SucursalId" class="control-label col-md-2"></label>
             <div class="col-md-10">
-                <select asp-for="Sucursal1Id" class="form-control" asp-items="ViewBag.Sucursal1Id"></select>
-                <span asp-validation-for="Sucursal1Id" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Sucursal2Id" class="control-label col-md-2"></label>
-            <div class="col-md-10">
-                <select asp-for="Sucursal2Id" class="form-control" asp-items="ViewBag.Sucursal2Id"></select>
-                <span asp-validation-for="Sucursal2Id" class="text-danger"></span>
+                <select asp-for="SucursalId" class="form-control" asp-items="ViewBag.SucursalId"></select>
+                <span asp-validation-for="SucursalId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">

@@ -16,16 +16,28 @@
                     @Html.DisplayNameFor(model => model.Usuario)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.NombreCliente)
+                    @Html.DisplayNameFor(model => model.NombreClienteEnvia)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ApellidoCliente)
+                    @Html.DisplayNameFor(model => model.ApellidoClienteEnvia)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TelefonoCliente)
+                    @Html.DisplayNameFor(model => model.TelefonoClienteEnvia)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CedulaCliente)
+                    @Html.DisplayNameFor(model => model.CedulaClienteEnvia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreClienteRecibe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApellidoClienteRecibe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoClienteRecibe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CedulaClienteRecibe)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.FechaCreacion)
@@ -34,10 +46,7 @@
                     @Html.DisplayNameFor(model => model.Total)
                 </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sucursal1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sucursal2)
+                @Html.DisplayNameFor(model => model.Sucursal)
             </th>
             <th></th>
         </tr>
@@ -49,16 +58,28 @@
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NombreCliente)
+                @Html.DisplayFor(modelItem => item.NombreClienteEnvia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApellidoCliente)
+                @Html.DisplayFor(modelItem => item.ApellidoClienteEnvia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TelefonoCliente)
+                @Html.DisplayFor(modelItem => item.TelefonoClienteEnvia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CedulaCliente)
+                @Html.DisplayFor(modelItem => item.CedulaClienteEnvia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreClienteRecibe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoClienteRecibe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoClienteRecibe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaClienteRecibe)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaCreacion)
@@ -67,10 +88,7 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Sucursal1.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sucursal2.Id)
+                @Html.DisplayFor(modelItem => item.Sucursal.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
