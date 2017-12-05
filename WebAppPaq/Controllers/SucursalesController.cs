@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebAppPaq.Data;
 using WebAppPaq.Models.Paq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAppPaq.Controllers
 {
+
+    [Authorize]
     public class SucursalesController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -7,95 +7,81 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nueva factura</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
+
+<div class="table-responsive">
+
+
+    <table class="table">
+        <thead>
+            <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Usuario)
+                    Cliente que envia
+                </th>
+
+                <th>
+                    Cedula
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.NombreClienteEnvia)
+                    Cliente que recibe
+                </th>
+
+                <th>
+                    Cedula
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ApellidoClienteEnvia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TelefonoClienteEnvia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CedulaClienteEnvia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NombreClienteRecibe)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ApellidoClienteRecibe)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TelefonoClienteRecibe)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CedulaClienteRecibe)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FechaCreacion)
+                    Fecha de creacion
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Total)
                 </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sucursal)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreClienteEnvia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoClienteEnvia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoClienteEnvia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CedulaClienteEnvia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreClienteRecibe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoClienteRecibe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoClienteRecibe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CedulaClienteRecibe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sucursal.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sucursal)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+     
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreClienteEnvia) @Html.DisplayFor(modelItem => item.ApellidoClienteEnvia)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CedulaClienteEnvia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreClienteRecibe) @Html.DisplayFor(modelItem => item.ApellidoClienteRecibe)
+                    </td>
+              
+         
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CedulaClienteRecibe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaCreacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sucursal.Descripcion)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>
+
+

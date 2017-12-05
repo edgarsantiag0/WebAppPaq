@@ -84,6 +84,34 @@
         </dd>
     </dl>
 </div>
+
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+  
+        <th>Tipo producto </th>
+        <th>Peso (lb) </th>
+        <th>Monto</th>
+        <th>Precio</th>
+        <th>Sucursal</th>
+   
+    </tr>
+    @foreach (var d in Model.DetalleFacturas)
+    {
+        <tr>
+          
+            <td>@d.TipoProducto</td>
+            <td>@d.PesoProducto</td>
+            <td>@d.MontoEnvio</td>
+            <td>@d.Precio</td>
+            <td>@d.Sucursal.Ciudad</td>
+
+        </tr>
+    }
+</table>
+
+  
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

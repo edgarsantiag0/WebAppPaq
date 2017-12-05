@@ -9,6 +9,12 @@ namespace WebAppPaq.Models.Paq
     [Table("DetalleFactura")]
     public class DetalleFactura
     {
+
+        public DetalleFactura()
+        {
+            Sucursal = new Sucursal();
+            Factura = new Factura();
+        }
         public int Id { get; set; }
         public int FacturaId { get; set; }
        

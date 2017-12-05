@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebAppPaq.Models.Paq
 {
-    [Table("Factura")]
-    public class Factura
+    public class FacturaModel
     {
-
-        public Factura()
+        public FacturaModel()
         {
             this.DetalleFacturas = new HashSet<DetalleFactura>();
         }
@@ -42,7 +39,7 @@ namespace WebAppPaq.Models.Paq
 
         public virtual Sucursal Sucursal { get; set; }
 
-   
+
 
 
         public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; }

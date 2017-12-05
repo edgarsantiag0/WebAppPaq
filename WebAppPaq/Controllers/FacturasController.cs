@@ -7,22 +7,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebAppPaq.Data;
 using WebAppPaq.Models.Paq;
+using Microsoft.AspNetCore.Identity;
+using WebAppPaq.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAppPaq.Controllers
 {
+    [Authorize]
     public class FacturasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public FacturasController(ApplicationDbContext context)
+        public FacturasController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;    
+            _context = context;
+            _userManager = userManager;
         }
 
         // GET: Facturas
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Facturas.Include(f => f.Sucursal);
+       
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,8 +41,8 @@ namespace WebAppPaq.Controllers
                 return NotFound();
             }
 
-            var factura = await _context.Facturas
-                .Include(f => f.Sucursal)
+            var factura = await _context.Facturas.Include("DetalleFacturas.Sucursal")
+                .Include(f => f.Sucursal).Include(f => f.DetalleFacturas)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (factura == null)
             {
@@ -156,6 +163,30 @@ namespace WebAppPaq.Controllers
         private bool FacturaExists(int id)
         {
             return _context.Facturas.Any(e => e.Id == id);
+        }
+
+        [HttpPost]
+        public JsonResult save([FromBody] Factura factura)
+        {
+            var user = _userManager.GetUserName(User);
+
+            try
+            {
+                // set usuario que registró la factura
+                factura.Usuario = user;
+
+                _context.Facturas.Add(factura);
+
+                _context.DetalleFacturas.AddRange(factura.DetalleFacturas);
+
+                _context.SaveChanges();
+
+                return Json(new { status = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = false });
+            }
         }
     }
 }

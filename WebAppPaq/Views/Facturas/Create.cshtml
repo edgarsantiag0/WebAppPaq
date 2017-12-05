@@ -17,59 +17,69 @@
                     </td>
                     <td>Fecha</td>
                     <td> 
-                        <input type="text" id="fechaCreacion" class="form-control" />
+                        <input type="text" id="fechaCreacion" disabled="disabled" class="form-control" />
                         <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
                     </td>
                 </tr>
                 <tr>
-                   
                     <td colspan="2">
-                        <label>Nombre cliente envía</label>
+                        <label>Cliente que envia</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <label>Nombre</label>
                         <input type="text" id="nombreClienteEnvia" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
-                   
+
                     <td colspan="2">
-                        <label>Apellido cliente envia</label>
+                        <label>Apellido</label>
                         <input type="text" id="apellidoClienteEnvia" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
 
                     <td colspan="2">
-                        <label>Telefono cliente envia</label>
+                        <label>Telefono</label>
                         <input type="text" id="telefonoClienteEnvia" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
- 
+
                     <td colspan="2">
-                        <label>Cedula cliente envia</label>
+                        <label>Cedula</label>
                         <input type="text" id="cedulaClienteEnvia" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
+                </tr>
 
+                <tr>
+                    <td colspan="2">
+                        <label>Cliente que recibe</label>
+                    </td>
                 </tr>
                 <tr>
                
                     <td colspan="2">
-                        <label>Nombre cliente recibe</label>
+                        <label>Nombre</label>
                         <input type="text" id="nombreClienteRecibe" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
                    
                     <td colspan="2">
-                        <label>Apellido cliente recibe</label>
+                        <label>Apellido</label>
                         <input type="text" id="apellidoClienteRecibe" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
                     
                     <td colspan="2">
-                        <label>Telefono cliente recibe</label>
+                        <label>Telefono</label>
                         <input type="text" id="telefonoClienteRecibe" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
                    
                     <td colspan="2">
-                        <label>Cedula cliente recibe</label>
+                        <label>Cedula</label>
                         <input type="text" id="cedulaClienteRecibe" class="form-control" />
                         <span class="error">Order no required</span>
                     </td>
@@ -90,8 +100,9 @@
         </div>
         <div class="details">
             <h2>
-                Detalle factura
+                Detalle factura 
             </h2>
+            <spam >(10 % por monto y 125 por libra) </spam>
             <table class="table table-responsive">
                 <tr>
                     <td>Tipo</td>
@@ -103,7 +114,7 @@
                 </tr>
                 <tr class="mycontainer" id="mainrow">
                     <td>
-                        <select id="tipoProducto" class="pc form-control" onchange="LoadTipoProducto(this)">
+                        <select id="tipoProducto" class="tp form-control" onchange="LoadTipoProducto(this)">
                             <option>Seleccionar</option>
                             <option>Paquete</option>
                             <option>Dinero</option>
@@ -112,19 +123,19 @@
                         <span class="error">Seleccionar tipo</span>
                     </td>
                     <td>
-                        <input type="text" id="peso" class="quantity form-control" />
+                        <input type="text" id="peso" disabled="disabled" class="peso form-control" />
                         <span class="error">valid peso required</span>
                     </td>
                     <td>
-                        <input type="text" id="monto" class="quantity form-control" />
+                        <input type="text" id="monto" disabled="disabled" class="monto form-control" />
                         <span class="error">Valid monto required</span>
                     </td>
                     <td>
-                        <input type="text" id="precio" disabled="disabled" class="rate form-control" />
+                        <input type="text" id="precio" disabled="disabled" class="precio form-control" />
                         <span class="error">Valid precio required</span>
                     </td>
                     <td>
-                        <select asp-for="SucursalId" class="form-control" asp-items="ViewBag.SucursalId"></select>
+                        <select id="sucursalDetalle" asp-for="SucursalId" class="sucursal form-control" asp-items="ViewBag.SucursalId"></select>
                         <span class="error">Valid precio required</span>
                     </td>
                     <td>
@@ -135,6 +146,10 @@
             <div id="orderItems">
                 <table class="table table-responsive" id="orderdetailsItems"></table>
                 <span id="orderItemError" style="color:red"></span>
+            </div>
+           
+            <div style="padding:10px 0; text-align:right">
+               Total:  <input type="text" id="total" disabled="disabled" style="padding:10px 20px"  />
             </div>
             <div style="padding:10px 0; text-align:right">
                 <input id="submit" type="button" value="Guardar" class="btn btn-warning" style="padding:10px 20px" />
@@ -153,7 +168,7 @@
 
     $(document).ready(function () {
         $('#fechaCreacion').datepicker({
-            dateFormat: 'dd/mm/yy hh:mm:ss aa',
+            dateFormat: 'dd/mm/yy',
         }).datepicker("option", {
             setDate: "0",
             maxDate: '+3y -1d',
@@ -164,7 +179,7 @@
 
     $(function () {
         $('#fechaCreacion').datepicker({
-            dateFormat: 'dd-MM-yyyy HH:mm'
+            dateFormat: 'dd-MM-yyyy'
         })
     })
 </script>
