@@ -8,9 +8,10 @@ using WebAppPaq.Data;
 namespace WebAppPaq.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171211023924_AddRolesUsuarios")]
+    partial class AddRolesUsuarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -144,8 +145,6 @@ namespace WebAppPaq.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<bool>("IsAdmin");
-
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -207,18 +206,6 @@ namespace WebAppPaq.Data.Migrations
                     b.ToTable("DetalleFactura");
                 });
 
-            modelBuilder.Entity("WebAppPaq.Models.Paq.Estado", b =>
-                {
-                    b.Property<int>("EstadoId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Descripcion");
-
-                    b.HasKey("EstadoId");
-
-                    b.ToTable("Estados");
-                });
-
             modelBuilder.Entity("WebAppPaq.Models.Paq.Factura", b =>
                 {
                     b.Property<int>("Id")
@@ -269,24 +256,6 @@ namespace WebAppPaq.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sucursal");
-                });
-
-            modelBuilder.Entity("WebAppPaq.Models.Paq.Track", b =>
-                {
-                    b.Property<int>("TrackId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("DetalleFacturaId");
-
-                    b.Property<int>("EstadoId");
-
-                    b.HasKey("TrackId");
-
-                    b.HasIndex("DetalleFacturaId");
-
-                    b.HasIndex("EstadoId");
-
-                    b.ToTable("Tracks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -343,19 +312,6 @@ namespace WebAppPaq.Data.Migrations
                     b.HasOne("WebAppPaq.Models.Paq.Sucursal", "Sucursal")
                         .WithMany("Factura")
                         .HasForeignKey("SucursalId");
-                });
-
-            modelBuilder.Entity("WebAppPaq.Models.Paq.Track", b =>
-                {
-                    b.HasOne("WebAppPaq.Models.Paq.DetalleFactura", "DetalleFactura")
-                        .WithMany("Tracks")
-                        .HasForeignKey("DetalleFacturaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebAppPaq.Models.Paq.Estado", "Estado")
-                        .WithMany("Tracks")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

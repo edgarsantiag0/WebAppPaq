@@ -1,4 +1,24 @@
 ﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
+@inject SignInManager<ApplicationUser> SignInManager
+@*@inject IAuthorizationService AuthorizationService*@
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    var phoneNumber = string.Empty;
+    var userLanguage = string.Empty;
+    var isAdmin = false;
+
+    if (User.Identity.IsAuthenticated)
+    {
+ 
+        var currentUser = UserManager.FindByIdAsync(@UserManager.GetUserName(User));
+
+    
+       
+    }
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,10 +58,14 @@
 
                     <li><a asp-area="" asp-controller="Facturas" asp-action="Index">Facturas</a></li>
                     <li><a asp-area="" asp-controller="Sucursales" asp-action="Index">Sucursales</a></li>
-
-                    
-
+                    <li><a asp-area="" asp-controller="Tracks" asp-action="Index">Tracking</a></li>
                 </ul>
+
+               
+
+
+
+
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>

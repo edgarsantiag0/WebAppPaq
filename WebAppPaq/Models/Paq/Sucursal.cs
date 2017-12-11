@@ -12,8 +12,8 @@ namespace WebAppPaq.Models.Paq
 
         public Sucursal()
         {
-            Factura = new HashSet<Factura>();
-            DetalleFactura = new HashSet<DetalleFactura>();
+            Facturas = new HashSet<Factura>();
+            DetalleFacturas = new HashSet<DetalleFactura>();
         }
 
         public int Id { get; set; }
@@ -22,8 +22,8 @@ namespace WebAppPaq.Models.Paq
         public string Direccion { get; set; }
 
  
-        public virtual ICollection<Factura> Factura { get; set; }
+        public virtual ICollection<Factura> Facturas { get; set; }
 
-        public virtual ICollection<DetalleFactura> DetalleFactura { get; set; }
+        public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; }
     }
 }

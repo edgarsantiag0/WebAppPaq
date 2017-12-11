@@ -177,6 +177,15 @@ namespace WebAppPaq.Controllers
 
                 _context.Facturas.Add(factura);
 
+                var listaTracks = new List<Track>();
+
+                foreach (var item in factura.DetalleFacturas)
+                {
+                    listaTracks.Add(new Track() { DetalleFacturaId = item.Id, EstadoId = 1,  });
+                }
+
+                _context.Tracks.AddRange(listaTracks);
+
                 _context.DetalleFacturas.AddRange(factura.DetalleFacturas);
 
                 _context.SaveChanges();

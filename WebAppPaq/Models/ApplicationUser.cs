@@ -9,6 +9,17 @@ namespace WebAppPaq.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
-       // public string UserName { get; set; }
+        public DateTime Birthdate { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public bool IsAdmin { get; set; }
+    }
+
+    public static class IdentityExtensions
+    {
+        public static bool IsAdmin()
+        {
+            return true;
+        }
     }
 }

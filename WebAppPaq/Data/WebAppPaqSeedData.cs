@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppPaq.Models;
 using WebAppPaq.Models.Paq;
 
 namespace WebAppPaq.Data
@@ -10,14 +13,27 @@ namespace WebAppPaq.Data
     {
 
         private ApplicationDbContext _context;
+    
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public WebAppPaqSeedData(ApplicationDbContext context)
+        public WebAppPaqSeedData(
+            ApplicationDbContext context,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public async Task EnsureSeedData()
         {
+
+
+            
+
+
             if (!_context.Facturas.Any())
             {
                 var facturaNueva = new Factura()
@@ -40,7 +56,7 @@ namespace WebAppPaq.Data
                     Sucursal = new Sucursal()
                     {
                         Ciudad = "La Vega",
-                        Descripcion = "Sucursal de ventas",
+                        Descripcion = "Sucursal de ventas, La Vega",
                         Direccion = "Calle 10, Gurabo",
                     },
                   
@@ -53,7 +69,7 @@ namespace WebAppPaq.Data
                             Sucursal = new Sucursal()
                                 {
                                     Ciudad = "Santo Domingo",
-                                    Descripcion = "Sucursal de ventas",
+                                    Descripcion = "Sucursal principal, Santo Domingo",
                                     Direccion = "Calle 10, Gurabo",
                                 }},
                         new DetalleFactura(){
@@ -62,27 +78,9 @@ namespace WebAppPaq.Data
                             Sucursal = new Sucursal()
                                 {
                                     Ciudad = "Pedernales",
-                                    Descripcion = "Sucursal de ventas",
+                                    Descripcion = "Sucursal de ventas, Pedernales",
                                     Direccion = "Calle 10, Gurabo",
-                                }},
-                        new DetalleFactura(){
-                            MontoEnvio = 800,
-                            Precio = 200, TipoProducto = "Dinero",
-                            Sucursal = new Sucursal()
-                                {
-                                    Ciudad = "San Pedro de Macoris",
-                                    Descripcion = "Sucursal de ventas",
-                                    Direccion = "Calle 10, Gurabo",
-                                }},
-                        new DetalleFactura(){
-                            MontoEnvio = 1200,
-                            Precio = 200, TipoProducto = "Dinero",
-                            Sucursal = new Sucursal()
-                                {
-                                    Ciudad = "Tenares",
-                                    Descripcion = "Sucursal de ventas",
-                                    Direccion = "Calle 10, Gurabo",
-                                }},
+                                }}
                     }
                 };
 
@@ -110,7 +108,7 @@ namespace WebAppPaq.Data
                     Sucursal = new Sucursal()
                     {
                         Ciudad = "Puerto Plata",
-                        Descripcion = "Sucursal de ventas",
+                        Descripcion = "Sucursal de ventas, Puerto Plata",
                         Direccion = "Calle 10, Gurabo",
                     },
 
@@ -123,7 +121,7 @@ namespace WebAppPaq.Data
                             Sucursal = new Sucursal()
                                 {
                                     Ciudad = "Mao",
-                                    Descripcion = "Sucursal de ventas",
+                                    Descripcion = "Sucursal de ventas, Mao",
                                     Direccion = "Calle 10, Gurabo",
                                 }},
                         new DetalleFactura(){
@@ -132,27 +130,9 @@ namespace WebAppPaq.Data
                             Sucursal = new Sucursal()
                                 {
                                     Ciudad = "Punta Cana",
-                                    Descripcion = "Sucursal de ventas",
+                                    Descripcion = "Sucursal de ventas, Punta Cana",
                                     Direccion = "Calle 10, Gurabo",
-                                }},
-                        new DetalleFactura(){
-                            MontoEnvio = 800,
-                            Precio = 200, TipoProducto = "Dinero",
-                            Sucursal = new Sucursal()
-                                {
-                                    Ciudad = "San Francisco",
-                                    Descripcion = "Sucursal de ventas",
-                                    Direccion = "Calle 10, Gurabo",
-                                }},
-                        new DetalleFactura(){
-                            MontoEnvio = 1200,
-                            Precio = 200, TipoProducto = "Dinero",
-                            Sucursal = new Sucursal()
-                                {
-                                    Ciudad = "Salcedo",
-                                    Descripcion = "Sucursal de ventas",
-                                    Direccion = "Calle 10, Gurabo",
-                                }},
+                                }}
                     }
                 };
 

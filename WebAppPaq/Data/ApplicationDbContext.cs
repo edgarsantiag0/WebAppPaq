@@ -19,7 +19,12 @@ namespace WebAppPaq.Data
         public DbSet<Sucursal> Sucursales { get; set; }
         public DbSet<Factura> Facturas { get; set; }
         public DbSet<DetalleFactura> DetalleFacturas { get; set; }
-       
+
+        public DbSet<Estado> Estados { get; set; }
+        public DbSet<Track> Tracks { get; set; }
+
+
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

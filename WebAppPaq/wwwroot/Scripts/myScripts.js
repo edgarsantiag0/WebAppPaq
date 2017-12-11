@@ -147,13 +147,13 @@ $(document).ready(function () {
             //} else {
 
 
-
+       
                 var orderItem = {
                     TipoProducto: $('.tp', this).val(),
                     PesoProducto: parseInt($('.peso', this).val()),
                     MontoEnvio: parseFloat($('.monto', this).val()),
                     Precio: parseFloat($('.precio', this).val()),
-                    SucursalId: parseFloat($('.sucursal', this).val())
+                    SucursalId: parseInt($('.sucursal', this).val())
 
                 }
                 list.push(orderItem);

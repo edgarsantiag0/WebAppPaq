@@ -1,0 +1,174 @@
+@model WebAppPaq.Models.Paq.Track
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Track</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="DetalleFacturaId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="DetalleFacturaId" class ="form-control" asp-items="ViewBag.DetalleFacturaId">
+                    <option>Seleccionar detalle factura</option>
+                </select>
+            </div>
+        </div>
+        <div id="div1">
+
+            <table id="tableDetalleFactura" class="table table-bordered table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <td> Tipo producto </td>
+                        <td> Peso (lb)</td>
+                        <td> Monto</td>
+                        <td> Precio </td>
+                    </tr>
+                </thead>
+                <tbody id="tbodyid">
+                    <tr id="filasDetalle" class="dataRow">
+
+                        <td class="tipoProducto">
+                            <label id="tipoProducto"> </label>
+                        </td>
+                        <td class="peso">
+                            <label id="peso">  </label>
+                        </td>
+                        <td class="monto">
+                            <label id="monto">  </label>
+                        </td>
+                        <td class="precio">
+                            <label id="precio">  </label>
+                        </td>
+                       
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+           
+
+           
+
+
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="EstadoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="EstadoId" class ="form-control" asp-items="ViewBag.EstadoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        
+    });
+
+    $(function () {
+
+        $('#DetalleFacturaId').change(function () {
+
+           
+            var detalleIdSource = "#DetalleFacturaId";
+            var selectedValue = $(this).find('option:selected').val();
+
+            var data = { id: selectedValue };
+
+            console.log("change ", selectedValue);
+
+            $.ajax({
+                type: 'POST',
+                url: '/Tracks/GetDetalleFacturaById',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (data) {
+
+                    console.log(data);
+
+                    data = data.result; 
+
+                  //  document.getElementById("tbodyid").deleteRow(0);
+
+                   // $("#tableDetalleFactura tr").remove();
+                    //$("#tbodyid").empty();
+
+
+                    $('#tipoProducto').text(data.tipoProducto); 
+                    $('#peso').text(data.pesoProducto); 
+                    $('#monto').text(data.montoEnvio); 
+                    $('#precio').text(data.precio); 
+
+                      
+                   // var clone = $('#filasDetalle').clone(true).attr('id', '');
+
+                   // clone.find('.tipoProducto').html(data.tipoProducto);
+                   // clone.find('.peso').html(data.pesoProducto);
+                   // clone.find('.monto').html(data.montoEnvio);
+                   // clone.find('.precio').html(data.precio);
+                   //// clone.find('.sucursal').html(data.sucursal.descripcion);
+                   // clone.appendTo('table');
+                
+
+                    
+
+                    
+                   
+                    
+                },
+                error: function (error) {
+                
+                }
+            });
+
+
+            //$.ajax({
+            //    url: "/Tracks/GetDetalleFacturaById",
+            //    type: "POST",
+            //    data: JSON.stringify(data),
+            //    contentType: 'application/json',
+            //    success: function (result) {
+            //        $("#div1").html(result); //here, div1 would be your grid-div id
+            //    }
+            //});
+
+
+        })
+    });
+
+
+
+
+
+
+
+
+</script>
