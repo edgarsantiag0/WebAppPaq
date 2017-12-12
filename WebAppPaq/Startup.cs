@@ -13,6 +13,7 @@ using WebAppPaq.Data;
 using WebAppPaq.Models;
 using WebAppPaq.Services;
 using WebAppPaq.Models.Paq;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebAppPaq
 {
@@ -44,7 +45,7 @@ namespace WebAppPaq
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-           
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, MyUserClaimsPrincipalFactory>();
 
             //services.AddIdentity<ApplicationUser, IdentityRole>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>()
