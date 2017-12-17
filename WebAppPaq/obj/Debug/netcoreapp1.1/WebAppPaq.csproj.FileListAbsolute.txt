@@ -19,3 +19,4 @@ C:\workspace\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo
 C:\workspace\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.AssemblyInfo.cs
 C:\workspace\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.dll
 C:\workspace\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.pdb
+C:\workspace\WebAppPaq\WebAppPaq\obj\Debug\netcoreapp1.1\WebAppPaq.csprojResolveAssemblyReference.cache

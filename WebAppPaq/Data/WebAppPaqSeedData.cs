@@ -30,8 +30,16 @@ namespace WebAppPaq.Data
         public async Task EnsureSeedData()
         {
 
+            var user = new ApplicationUser
 
-            
+            {   UserName = "admin@chikitoexpress.com",
+                Email = "admin@chikitoexpress.com",
+                IsAdmin = "1"
+            };
+
+
+            var result = await _userManager.CreateAsync(user, "Admin123456$");
+
 
 
             if (!_context.Facturas.Any())
